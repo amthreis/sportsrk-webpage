@@ -16,9 +16,7 @@ export default function FootballCard(props: FootballCardProps) {
             >
                 <div
                     className={`w-[16px] h-[24px] rounded-[4px] ${cardColor["RED"]} translate-x-[5px] translate-y-[5px]`}
-                >
-                    
-                </div>
+                ></div>
             </div>
         );
     } else {
@@ -28,6 +26,4 @@ export default function FootballCard(props: FootballCardProps) {
             />
         );
     }
-
-    
 }

@@ -10,6 +10,7 @@ import { useTheme } from "next-themes";
 import BallSvg from "@/svg/ball-svg";
 import SunSvg from "@/svg/sun-svg";
 import MoonSvg from "@/svg/moon-svg";
+import SunMoonSvg from "@/svg/sun-moon-svg";
 
 const links = [
     {
@@ -25,6 +26,8 @@ const links = [
 export default function Header() {
     const path = usePathname();
     const { theme, setTheme } = useTheme();
+
+    console.log(theme);
 
     return (
         <div className="py-3 px-4 flex items-center justify-between border-b">
@@ -44,13 +47,18 @@ export default function Header() {
                         </Button>
                     </Link>
                 ))}
-                <Button variant="outline" size="icon" onClick={() => {setTheme(theme != "dark" ? "dark" : "light"); console.log("change")}}>
-                    {
-                        theme == "dark" ? <MoonSvg width={24} /> : <SunSvg width={24} stroke="black"/>
-                    }
-                    
-                </Button>
+
+                
             </div>
         </div>
     );
 }
+
+/*
+<Button variant="outline" onClick={ () => { setTheme(theme !== "dark" ? "dark" : "light" ) }}>
+{
+    <SunMoonSvg width={25} height={25} fill={ theme === "dark" ? "white" : "black"   } /> 
+}
+</Button>
+
+*/

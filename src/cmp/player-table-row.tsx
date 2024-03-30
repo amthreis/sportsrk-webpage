@@ -9,19 +9,19 @@ export const ptrowStyles = {
         imageSize: 80,
         pCN: "font-bold text-2xl",
         tableCN: "",
-        skeletonCN: "w-[80px] h-[80px] rounded-full"
+        skeletonCN: "w-[80px] h-[80px] rounded-full",
     },
     regular: {
         imageSize: 64,
         pCN: "font-semibold text-xl",
         tableCN: "translate-x-[8px] ",
-        skeletonCN: "w-[64px] h-[64px] rounded-full"
+        skeletonCN: "w-[64px] h-[64px] rounded-full",
     },
     small: {
         imageSize: 48,
         pCN: "text-sm",
         tableCN: "translate-x-[16px] ",
-        skeletonCN: "w-[48px] h-[48px] rounded-full"
+        skeletonCN: "w-[48px] h-[48px] rounded-full",
     },
 };
 
@@ -44,43 +44,38 @@ export const ptrowBadgeColors = ["gold", "darkgray", "peru"];
 
 export interface PlayerTableRowProps {
     user: {
-        email: string,
-        id: string,
-        avatar: string,
-        role: string
-    },
-    pos: "GK" | "FB" | "CB" | "DM" | "CM" | "LM" | "AM" | "WG" | "ST",
-    mmr: number,
-    mmrIncr: number,
-    rank: number
+        email: string;
+        id: string;
+        avatar: string;
+        role: string;
+    };
+    pos: "GK" | "FB" | "CB" | "DM" | "CM" | "LM" | "AM" | "WG" | "ST";
+    mmr: number;
+    mmrIncr: number;
+    rank: number;
 }
 
 export default function PlayerTableRow(ply: PlayerTableRowProps) {
     const idx = ply.rank;
 
     const style =
-                        idx < 3
-                            ? ptrowStyles.big
-                            : idx < 10
-                              ? ptrowStyles.regular
-                              : ptrowStyles.small;
+        idx < 3
+            ? ptrowStyles.big
+            : idx < 10
+              ? ptrowStyles.regular
+              : ptrowStyles.small;
 
     return (
         <TableRow className="" key={ply.user.id}>
             <TableCell className={`${style.pCN}`}>
                 <div className="flex items-center justify-center gap-[2px]">
                     {idx < 3 && (
-                        <AwardIcon
-                            color={ptrowBadgeColors[idx]}
-                            size={20}
-                        />
+                        <AwardIcon color={ptrowBadgeColors[idx]} size={20} />
                     )}
                     <p>{idx + 1}</p>
                 </div>
             </TableCell>
-            <TableCell
-                className={`flex items-center gap-3 ${style.tableCN}`}
-            >
+            <TableCell className={`flex items-center gap-3 ${style.tableCN}`}>
                 <Image
                     alt={`${ply.user.email.split("@")[0]}'s avatar'`}
                     className={`rounded-full`}
@@ -88,17 +83,20 @@ export default function PlayerTableRow(ply: PlayerTableRowProps) {
                     height={style.imageSize}
                     src={ply.user.avatar}
                 ></Image>
-                <Badge className={`${posCNs[ply.pos]} min-w-[43px] flex justify-center items-center`}>
+                <Badge
+                    className={`${posCNs[ply.pos]} min-w-[43px] flex justify-center items-center`}
+                >
                     {ply.pos}
                 </Badge>
                 {ply.user.email.split("@")[0]}
             </TableCell>
             <TableCell className="text-center items-center">
-                <h4 className="font-bold text-[18px]">
-                    {formatMMR(ply.mmr)}
-                </h4>
-                <p className={`font-semibold text-[12px] ${ ply.mmrIncr >= 0 ? " text-green-600" : "text-red-500" }`}>
-                    ({ply.mmrIncr >= 0 ? "+" : ""}{formatMMR(ply.mmrIncr)})
+                <h4 className="font-bold text-[18px]">{formatMMR(ply.mmr)}</h4>
+                <p
+                    className={`font-semibold text-[12px] ${ply.mmrIncr >= 0 ? " text-green-600" : "text-red-500"}`}
+                >
+                    ({ply.mmrIncr >= 0 ? "+" : ""}
+                    {formatMMR(ply.mmrIncr)})
                 </p>
             </TableCell>
         </TableRow>

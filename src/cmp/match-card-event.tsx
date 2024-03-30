@@ -1,26 +1,26 @@
-"use client"
+"use client";
 
 import BallSvg from "@/svg/ball-svg";
 import FootballCard from "./football-card";
 
 const ballColor = {
     ["dark"]: "white",
-    ["light"]: "black"
-}
+    ["light"]: "black",
+};
 
 const eventIcon = {
-    ["GOAL"]: <BallSvg width={20} height={20} fill="darkgray"/>,
+    ["GOAL"]: <BallSvg width={20} height={20} fill="darkgray" />,
     ["REDCARD"]: <FootballCard color="RED" />,
     ["YELLOWCARD"]: <FootballCard color="YELLOW" />,
-    ["YELLOWREDCARD"]: <FootballCard color="YELLOWRED" />
+    ["YELLOWREDCARD"]: <FootballCard color="YELLOWRED" />,
 };
 
 export interface MatchCardEventProps {
-    time: number,
-    player: string,
-    side: "HOME" | "AWAY",
-    type: "GOAL" | "REDCARD" | "YELLOWCARD" | "YELLOWREDCARD",
-    playerpos: string
+    time: number;
+    player: string;
+    side: "HOME" | "AWAY";
+    type: "GOAL" | "REDCARD" | "YELLOWCARD" | "YELLOWREDCARD";
+    playerpos: string;
 }
 
 export default function MatchCardEvent(props: MatchCardEventProps) {

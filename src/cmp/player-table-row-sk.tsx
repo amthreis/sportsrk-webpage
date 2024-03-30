@@ -10,42 +10,38 @@ export interface PlayerTableRowSkeletonProps {
     rank: number;
 }
 
-export default function PlayerTableRowSkeleton(props: PlayerTableRowSkeletonProps) {
+export default function PlayerTableRowSkeleton(
+    props: PlayerTableRowSkeletonProps,
+) {
     const idx = props.rank;
 
     const style =
-                        idx < 3
-                            ? ptrowStyles.big
-                            : idx < 10
-                              ? ptrowStyles.regular
-                              : ptrowStyles.small;
+        idx < 3
+            ? ptrowStyles.big
+            : idx < 10
+              ? ptrowStyles.regular
+              : ptrowStyles.small;
 
     return (
-        <TableRow className=""  key={idx}>
+        <TableRow className="" key={idx}>
             <TableCell className={`${style.pCN}`}>
                 <div className="flex items-center justify-center gap-[2px]">
                     {idx < 3 && (
-                        <AwardIcon
-                            color={ptrowBadgeColors[idx]}
-                            size={20}
-                        />
+                        <AwardIcon color={ptrowBadgeColors[idx]} size={20} />
                     )}
                     <p>{idx + 1}</p>
                 </div>
             </TableCell>
-            <TableCell
-                className={`flex items-center gap-3 ${style.tableCN}`}
-            >
+            <TableCell className={`flex items-center gap-3 ${style.tableCN}`}>
                 <Skeleton className={style.skeletonCN}></Skeleton>
-                <Skeleton className="w-[180px] h-[22px] rounded-full"/>
+                <Skeleton className="w-[180px] h-[22px] rounded-full" />
             </TableCell>
             <TableCell className="">
-                <Skeleton className="w-[90px] h-[48px] rounded-full m-auto"/>
+                <Skeleton className="w-[90px] h-[48px] rounded-full m-auto" />
             </TableCell>
         </TableRow>
     );
 }
-
 
 /*
 

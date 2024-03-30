@@ -1,14 +1,12 @@
-
-
 export function formatMMR(value: number): string {
     const v = Math.abs(value);
 
     if (v >= 1_000_000) {
-        return `${round(value / 1_000_000, 2)}M`
+        return `${round(value / 1_000_000, 2)}M`;
     } else if (v >= 100_000) {
-        return `${round(value / 1_000, 1)}k`
+        return `${round(value / 1_000, 1)}k`;
     } else if (v >= 1000) {
-        return `${round(value / 1_000, 2)}k`
+        return `${round(value / 1_000, 2)}k`;
     } else {
         return `${value}`;
     }

@@ -225,40 +225,45 @@ import PlayerTableRowSkeleton from "../player-table-row-sk";
 //     },
 // ];
 
-
-
-
-
 export function TableTop100() {
-    const [ players, setPlayers ] = useState<PlayerTableRowProps[]>([]);
+    const [players, setPlayers] = useState<PlayerTableRowProps[]>([]);
 
     useEffect(() => {
         async function fetchUsers() {
-           // console.log("an effect");
+            // console.log("an effect");
 
-            console.log("fetch from", `http://localhost:5757/common/football/top100`);
+            console.log(
+                "fetch from",
+                `http://localhost:5757/common/football/top100`,
+            );
 
-            const response = await fetch(`http://localhost:5757/common/football/top100`, {
-                method: "GET"
-            });
-        
+            const response = await fetch(
+                `http://localhost:5757/common/football/top100`,
+                {
+                    method: "GET",
+                },
+            );
+
             const result = await response.json();
-        
+
             setPlayers(result);
 
             console.log(result);
         }
 
         fetchUsers();
-
     }, []);
 
     function getPlayers() {
         if (players.length > 0) {
-            return players.map((ply, idx) => <PlayerTableRow key={idx} {...ply} rank={idx}/>);
+            return players.map((ply, idx) => (
+                <PlayerTableRow key={idx} {...ply} rank={idx} />
+            ));
         } else {
             console.log(Array(100).length);
-            return Array.from(Array(100)).map((ply, idx) => <PlayerTableRowSkeleton key={idx} rank={idx}/>);
+            return Array.from(Array(100)).map((ply, idx) => (
+                <PlayerTableRowSkeleton key={idx} rank={idx} />
+            ));
         }
     }
 
@@ -272,11 +277,7 @@ export function TableTop100() {
                     <TableHead className="text-center">MMR</TableHead>
                 </TableRow>
             </TableHeader>
-            <TableBody>
-                {
-                    getPlayers()
-                }
-            </TableBody>
+            <TableBody>{getPlayers()}</TableBody>
         </Table>
     );
 }

@@ -12,20 +12,20 @@ import { Separator } from "./shadcn/ui/separator";
 import { formatMMR } from "@/utils/no-format";
 
 export interface MatchCardProps {
-    id: string,
-    state: string,
-    time: string,
-    avgmmr: number,
+    id: string;
+    state: string;
+    time: string;
+    avgmmr: number;
 
     data: {
         teams: {
-            matchId: string,
-            side: string,
-            goals: number
-        }[]
-    },
+            matchId: string;
+            side: string;
+            goals: number;
+        }[];
+    };
 
-    events: MatchCardEventProps[]
+    events: MatchCardEventProps[];
 }
 
 export default function MatchCard(props: MatchCardProps) {
@@ -35,34 +35,41 @@ export default function MatchCard(props: MatchCardProps) {
                 <CardHeader className="text-center visible">
                     <CardTitle className="flex justify-center gap-2 items-center">
                         <div className="w-[32px] h-[32px] bg-red-400 rounded-full" />
-                        {props.data.teams[0].goals} - {props.data.teams[1].goals}
+                        {props.data.teams[0].goals} -{" "}
+                        {props.data.teams[1].goals}
                         <div className="w-[32px] h-[32px] bg-purple-400 rounded-full" />
                     </CardTitle>
-                    <CardDescription>{new Date(Date.parse(props.time)).toLocaleDateString() }, {formatDistanceToNow(new Date(Date.parse(props.time)), { addSuffix: true }) }</CardDescription>
+                    <CardDescription>
+                        {new Date(Date.parse(props.time)).toLocaleDateString()},{" "}
+                        {formatDistanceToNow(new Date(Date.parse(props.time)), {
+                            addSuffix: true,
+                        })}
+                    </CardDescription>
                 </CardHeader>
                 <Separator
                     orientation="horizontal"
                     className="w-[80px] m-auto  visible"
                 />
                 <CardContent className="visible">
-                    {
-                        props.events.map((ev, idx) => (
-                            <MatchCardEvent
-                                player={ev.player.split("@")[0]}
-                                side={ev.side}
-                                time={ev.time}
-                                type={ev.type}
-                                playerpos={ev.playerpos}
-                            />
-                        ))
-                    }
+                    {props.events.map((ev, idx) => (
+                        <MatchCardEvent
+                            key={idx}
+                            player={ev.player.split("@")[0]}
+                            side={ev.side}
+                            time={ev.time}
+                            type={ev.type}
+                            playerpos={ev.playerpos}
+                        />
+                    ))}
                 </CardContent>
                 <Separator
                     orientation="horizontal"
                     className="w-[80px] m-auto mb-5 visible"
                 />
                 <CardFooter className="justify-center flex text-g visible">
-                    <CardDescription>Average MMR: {formatMMR(props.avgmmr)}</CardDescription>
+                    <CardDescription>
+                        Average MMR: {formatMMR(props.avgmmr)}
+                    </CardDescription>
                 </CardFooter>
             </Card>
             <Separator
