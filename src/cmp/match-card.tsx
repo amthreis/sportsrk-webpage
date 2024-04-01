@@ -35,8 +35,8 @@ export default function MatchCard(props: MatchCardProps) {
                 <CardHeader className="text-center visible">
                     <CardTitle className="flex justify-center gap-2 items-center">
                         <div className="w-[32px] h-[32px] bg-red-400 rounded-full" />
-                        {props.data.teams[0].goals} -{" "}
-                        {props.data.teams[1].goals}
+                        {props.data.teams.find(t => t.side === "HOME")?.goals}{" "}-{" "}
+                        {props.data.teams.find(t => t.side === "AWAY")?.goals}
                         <div className="w-[32px] h-[32px] bg-purple-400 rounded-full" />
                     </CardTitle>
                     <CardDescription>
