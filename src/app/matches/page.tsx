@@ -12,7 +12,7 @@ export default function Home() {
             //console.log("an effect");
 
             const response = await fetch(
-                `http://localhost:5757/common/football/latest-matches`,
+                `${process.env.NEXT_PUBLIC_API_URL}/common/football/latest-matches`,
                 {
                     method: "GET",
                 },

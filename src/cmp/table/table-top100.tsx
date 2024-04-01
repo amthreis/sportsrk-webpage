@@ -229,16 +229,16 @@ export function TableTop100() {
     const [players, setPlayers] = useState<PlayerTableRowProps[]>([]);
 
     useEffect(() => {
+        //console.log("fUsers eff");
         async function fetchUsers() {
-            // console.log("an effect");
 
-            console.log(
-                "fetch from",
-                `http://localhost:5757/common/football/top100`,
-            );
+            // console.log(
+            //     "fetch from",
+            //     `${process.env.NEXT_PUBLIC_API_URL}/common/football/top100`,
+            // );
 
             const response = await fetch(
-                `http://localhost:5757/common/football/top100`,
+                `${process.env.NEXT_PUBLIC_API_URL}/common/football/top100`,
                 {
                     method: "GET",
                 },
@@ -248,7 +248,7 @@ export function TableTop100() {
 
             setPlayers(result);
 
-            console.log(result);
+            //console.log(result);
         }
 
         fetchUsers();
@@ -260,7 +260,6 @@ export function TableTop100() {
                 <PlayerTableRow key={idx} {...ply} rank={idx} />
             ));
         } else {
-            console.log(Array(100).length);
             return Array.from(Array(100)).map((ply, idx) => (
                 <PlayerTableRowSkeleton key={idx} rank={idx} />
             ));

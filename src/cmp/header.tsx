@@ -27,7 +27,7 @@ export default function Header() {
     const path = usePathname();
     const { theme, setTheme } = useTheme();
 
-    console.log(theme);
+    //console.log(theme);
 
     return (
         <div className="py-3 px-4 flex items-center justify-between border-b">
