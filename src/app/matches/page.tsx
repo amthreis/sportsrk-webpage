@@ -39,7 +39,7 @@ export default function Home() {
                 <MatchCard key={idx} {...m} />
             ))}
 
-            <p className="text-sm text-zinc-500">You've seen it all.</p>
+            <p className="text-sm text-zinc-500">{"You've seen it all."}</p>
         </main>
     );
 }

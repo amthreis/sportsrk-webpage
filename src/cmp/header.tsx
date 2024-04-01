@@ -47,8 +47,6 @@ export default function Header() {
                         </Button>
                     </Link>
                 ))}
-
-                
             </div>
         </div>
     );

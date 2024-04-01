@@ -231,7 +231,6 @@ export function TableTop100() {
     useEffect(() => {
         //console.log("fUsers eff");
         async function fetchUsers() {
-
             // console.log(
             //     "fetch from",
             //     `${process.env.NEXT_PUBLIC_API_URL}/common/football/top100`,

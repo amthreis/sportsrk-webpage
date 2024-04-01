@@ -36,7 +36,8 @@ export default function MatchCardEvent(props: MatchCardEventProps) {
             </div>
 
             <div className=" w-[80px] text-center font-bold">
-                {props.time}''
+                {props.time}
+                {"''"}
             </div>
 
             <div className="flex-1 text-left flex items-center gap-2">
