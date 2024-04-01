@@ -21,7 +21,7 @@ export default function Home() {
                         how good a player is.
                     </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="justify-center flex">
                     <TableTop100 />
                 </CardContent>
             </Card>
