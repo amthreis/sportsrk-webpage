@@ -14,13 +14,13 @@ import SunMoonSvg from "@/svg/sun-moon-svg";
 
 const links = [
     {
-        name: "MATCHES",
-        link: "/matches",
-    },
-    {
         name: "TOP 100",
         link: "/",
     },
+    {
+        name: "MATCHES",
+        link: "/matches",
+    }
 ];
 
 export default function Header() {
