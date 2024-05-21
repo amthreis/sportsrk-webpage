@@ -3,14 +3,9 @@
 import { TrophyIcon } from "lucide-react";
 import { Button } from "./shadcn/ui/button";
 
-import { MoonIcon, SunIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import BallSvg from "@/svg/ball-svg";
-import SunSvg from "@/svg/sun-svg";
-import MoonSvg from "@/svg/moon-svg";
-import SunMoonSvg from "@/svg/sun-moon-svg";
 
 const links = [
     {
@@ -25,9 +20,6 @@ const links = [
 
 export default function Header() {
     const path = usePathname();
-    const { theme, setTheme } = useTheme();
-
-    //console.log(theme);
 
     return (
         <div className="py-3 px-4 flex items-center justify-between border-b">
